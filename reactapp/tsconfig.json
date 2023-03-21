@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "module": "commonjs",
+    "strictNullChecks": true
+  },
+  "moduleResolution": "node",
+  "include": [ "**/*.ts", "aspnetcore-https.js", "aspnetcore-react.js" ]
+}

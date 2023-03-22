@@ -1,9 +1,13 @@
 ﻿using System;
+using System.Text.Json.Serialization;
+
 namespace webapi.Models
 {
 	public class IngredientsList
 	{
-		public Ingredient[] Ingredients { get; set; }
+
+        [JsonPropertyName("ingredients")]
+        public IEnumerable<Ingredient> Ingredients { get; set; }
 	}
 }
 

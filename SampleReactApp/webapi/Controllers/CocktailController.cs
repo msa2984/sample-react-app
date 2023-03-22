@@ -15,14 +15,14 @@ public class CocktailController : ControllerBase
         _logger = logger;
     }
 
-    [HttpGet(Name = "GetIngredient")]
-    public async Task<IEnumerable<Ingredient>> GetIngredients()
+    [HttpGet(Name = "GetIngredientsByName")]
+    public async Task<IEnumerable<Ingredient>> GetIngredients(string name)
     {
         using HttpClient client = new();
         client.DefaultRequestHeaders.Accept.Clear();
-        var json = await client.GetStringAsync("https://www.thecocktaildb.com/api/json/v1/1/search.php?i=peach");
+        var json = await client.GetStringAsync($"https://www.thecocktaildb.com/api/json/v1/1/search.php?i={name}");
         var content = JsonSerializer.Deserialize<IngredientsList>(json);
 
-        return new List<Ingredient>();
+        return content.Ingredients;
     }
 }

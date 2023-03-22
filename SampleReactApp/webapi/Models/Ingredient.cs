@@ -1,4 +1,6 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.ComponentModel;
+using System.Text.Json.Serialization;
+using webapi.JsonConverters;
 
 namespace webapi.Models
 {
@@ -8,6 +10,7 @@ namespace webapi.Models
         public string Name { get; set; }
 
         [JsonPropertyName("idIngredient")]
+        [JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
         public int Id { get; set; }
 
         [JsonPropertyName("strDescription")]
@@ -17,7 +20,8 @@ namespace webapi.Models
         public string Type { get; set; }
 
         [JsonPropertyName("strAlcohol")]
-        public string isAlcohol { get; set; }
+        [JsonConverter(typeof(CocktailBooleanConverter))]
+        public bool IsAlcohol { get; set; }
 
         [JsonPropertyName("strABV")]
         public string ABV { get; set; }

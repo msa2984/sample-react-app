@@ -1,0 +1,17 @@
+{
+  "image": "mcr.microsoft.com/devcontainers/typescript-node",
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "streetsidesoftware.code-spell-checker",
+        "dbaeumer.vscode-eslint",
+        "ms-vscode.vscode-typescript-next"
+      ],
+      "features": [
+        "ghcr.io/devcontainers/features/git:latest",
+        "ghcr.io/devcontainers/features/github-cli:latest",
+      ]}
+  },
+  "forwardPorts": [3000]
+}

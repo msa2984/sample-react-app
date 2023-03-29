@@ -5,6 +5,7 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { IngredientView } from './IngredientView';
+import { CocktailView } from './CocktailView';
 
 export function APICallAccordionView() {
   return (
@@ -21,7 +22,7 @@ export function APICallAccordionView() {
           <IngredientView />
         </AccordionDetails>
       </Accordion>
-      <Accordion disabled>
+      <Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel2a-content"
@@ -30,9 +31,7 @@ export function APICallAccordionView() {
           <Typography>Get Cocktails by Name</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
-            This endpoint has not been implemented yet!
-          </Typography>
+          <CocktailView />
         </AccordionDetails>
       </Accordion>
     </div>

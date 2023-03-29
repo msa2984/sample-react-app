@@ -1,14 +1,14 @@
 import React from "react";
 import { IIngredient } from "../interfaces/IIngredient";
 import { IApiTypeProps } from "../interfaces/IApiTypeProps";
-import { checkForNullJson } from "../backend/jsonhelpers";
+import { checkForNullJson } from "../backend/jsonHelpers";
 
 export class Ingredient extends React.Component<IApiTypeProps> implements IIngredient{
   name: string = "";
   id: number = NaN;
   description: string = "";
   type: string = "";
-  isAlcohol: boolean = false;
+  isAlcoholic: boolean = false;
   abv: number = NaN;
 
   constructor(props: IApiTypeProps) {
@@ -27,12 +27,11 @@ export class Ingredient extends React.Component<IApiTypeProps> implements IIngre
       this.abv = +jsonObject["strABV"];
 
       if (String(jsonObject["strAlcohol"]).toLowerCase() === "yes") {
-        this.isAlcohol = true;
+        this.isAlcoholic = true;
       }
     }
     catch (e) {
-      console.error(e);
-      console.error("Couldn't parse at least one JSON key! Could not parse ingredient.")
+      console.error(`Couldn't parse at least one JSON key! Could not parse ingredient due to error ${e}`)
       return;
     }
 

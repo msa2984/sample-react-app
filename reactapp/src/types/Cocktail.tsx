@@ -1,9 +1,10 @@
 import React from "react";
 import { IApiTypeProps } from "../interfaces/IApiTypeProps";
-import { checkForNullJson } from "../backend/jsonhelpers";
-import { cocktailInstruction } from "./CocktailInstruction";
+import { checkForNullJson } from "../backend/jsonHelpers";
+import { CocktailInstruction } from "./CocktailInstruction";
+import { ICocktail } from "../interfaces/ICocktail";
 
-export class Cocktail extends React.Component<IApiTypeProps> {
+export class Cocktail extends React.Component<IApiTypeProps> implements ICocktail{
   id: number = NaN;
   name: string = "";
   drinkAlternate: string = "";
@@ -21,7 +22,7 @@ export class Cocktail extends React.Component<IApiTypeProps> {
   instructionsChineseSimplified: string = "";
   instructionsChineseTraditional: string = "";
   thumbnailLink: string = "";
-  cocktailInstructions: cocktailInstruction[] = []; // measure + ingredient 15
+  cocktailInstructions: CocktailInstruction[] = []; // measure + ingredient 15
   imageSource: string = "";
   imageAttribution: string = "";
   isCreativeCommonsConfirmed: boolean = false;
@@ -66,13 +67,12 @@ export class Cocktail extends React.Component<IApiTypeProps> {
         var measure = jsonObject[`strMeasure${i}`];
         var ingredient = jsonObject[`strIngredient${i}`];
         if (measure !== null && ingredient !== null) {
-          this.cocktailInstructions.push(new cocktailInstruction({ measure: measure, ingredient: ingredient }));
+          this.cocktailInstructions.push(new CocktailInstruction({ measure: measure, ingredient: ingredient }));
         }
       }
     }
     catch (e) {
-      console.error(e);
-      console.error("Couldn't parse at least one JSON key! Could not parse cocktail.")
+      console.error(`Couldn't parse at least one JSON key! Could not parse cocktail due to error ${e}.`)
       return;
     }
 

@@ -3,8 +3,7 @@ export function checkForNullJson(json: string): boolean {
     try {
       JSON.parse(json);
     } catch (e) {
-      console.error(e);
-      console.error("Input prop was not JSON! Cannot parse the ingredient.");
+      console.error(`Input prop was not JSON! Cannot parse the ingredient due to error ${e}.`);
       return false;
     }
   }

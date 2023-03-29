@@ -1,8 +1,7 @@
-export interface IIngredient {
-  name: string;
-  id: number;
+import { IBaseItem } from "./IBaseItem";
+
+export interface IIngredient extends IBaseItem {
   description: string;
   type: string;
-  isAlcohol: boolean;
   abv: number
 }

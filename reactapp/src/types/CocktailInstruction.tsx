@@ -1,6 +1,6 @@
 import React from "react";
 
-export class cocktailInstruction extends React.Component {
+export class CocktailInstruction extends React.Component {
   ingredient: string = "";
   measure: string = "";
 }

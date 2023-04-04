@@ -1,6 +1,6 @@
 import React from "react";
 import { IApiTypeProps } from "../interfaces/IApiTypeProps";
-import { checkForNullJson } from "../backend/jsonHelpers";
+import { checkForNullJson } from "../backend/jsonhelpers";
 import { CocktailInstruction } from "./CocktailInstruction";
 import { ICocktail } from "../interfaces/ICocktail";
 

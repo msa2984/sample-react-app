@@ -1,7 +1,7 @@
 import React from "react";
 import { IIngredient } from "../interfaces/IIngredient";
 import { IApiTypeProps } from "../interfaces/IApiTypeProps";
-import { checkForNullJson } from "../backend/jsonHelpers";
+import { checkForNullJson } from "../backend/jsonhelpers";
 
 export class Ingredient extends React.Component<IApiTypeProps> implements IIngredient{
   name: string = "";

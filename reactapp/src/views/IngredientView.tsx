@@ -5,15 +5,18 @@ import React, { useState } from 'react';
 import { fetchCocktailIngredients } from '../backend/cocktailApi'
 import { Ingredient } from '../types/Ingredient';
 import { SearchByNameView } from './SearchByNameView';
+import { IngredientResponseView } from './IngredientResponseView';
 
 export function IngredientView() {
   const [ingredientName, setIngredientName] = useState("");
   const [isSearchButtonDisabled, setIsSearchButtonDisabled] = useState(true);
+  const [ingredientResponse, setIngredientResponse] = useState<Ingredient[]>([]);
 
   var searchForIngredients = async (e: React.MouseEvent<HTMLElement>) => {
     if (ingredientName) {
       const ingredients : Ingredient[] = await fetchCocktailIngredients(ingredientName);
       if (ingredients && ingredients.length > 0) {
+        setIngredientResponse(ingredients);
         console.log("Retrieved ingredients!");
       }
       else {
@@ -27,6 +30,7 @@ export function IngredientView() {
   }
 
   return (
+    <>
     <SearchByNameView
       id="get-ingredient-by-name-id"
       label="Ingredient Name"
@@ -38,5 +42,7 @@ export function IngredientView() {
       setIsSearchDisabled={setIsSearchButtonDisabled}
       searchAction={searchForIngredients}
     />
+    {ingredientResponse.length > 0 ? <IngredientResponseView ingredientList={ingredientResponse} /> : <></>}
+    </>
   )
 }

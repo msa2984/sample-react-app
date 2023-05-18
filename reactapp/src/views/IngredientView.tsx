@@ -10,7 +10,7 @@ import { IngredientResponseView } from './IngredientResponseView';
 export function IngredientView() {
   const [ingredientName, setIngredientName] = useState("");
   const [isSearchButtonDisabled, setIsSearchButtonDisabled] = useState(true);
-  const [ingredientResponse, setIngredientResponse] = useState<Ingredient[]>([]);
+  const [ingredientResponse, setIngredientResponse] = useState<Ingredient[]>([]); // TODO: This should initially be set to null, not an empty array.
 
   var searchForIngredients = async (e: React.MouseEvent<HTMLElement>) => {
     if (ingredientName) {
@@ -42,7 +42,7 @@ export function IngredientView() {
       setIsSearchDisabled={setIsSearchButtonDisabled}
       searchAction={searchForIngredients}
     />
-    {ingredientResponse.length > 0 ? <IngredientResponseView ingredientList={ingredientResponse} /> : <></>}
+    <IngredientResponseView ingredientList={ingredientResponse} />
     </>
   )
 }

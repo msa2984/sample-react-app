@@ -12,8 +12,12 @@ export function IngredientResponseView(props: IIngredientResponseProps) {
   const listItems = ingredientList.map((ingredient) => <li key={ingredient.id}>{ingredient.name}</li>);
 
   return (
-    <div>
-      <ul>{listItems}</ul>
+    <div>{
+      ingredientList? (
+      ingredientList.length > 0 ?
+        <ul>{listItems}</ul> :
+        <span>Sorry, there are no ingredients matching the provided input. Please try again.</span>)
+        : (<></>)}
     </div>
   )
 }

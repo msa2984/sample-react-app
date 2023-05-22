@@ -1,10 +1,13 @@
 import React from "react";
 import { IApiTypeProps } from "../interfaces/IApiTypeProps";
-import { checkForNullJson } from "../backend/jsonhelpers";
+import { checkForNullJson } from "../backend/jsonHelpers";
 import { CocktailInstruction } from "./CocktailInstruction";
 import { ICocktail } from "../interfaces/ICocktail";
 
-export class Cocktail extends React.Component<IApiTypeProps> implements ICocktail{
+export class Cocktail
+  extends React.Component<IApiTypeProps>
+  implements ICocktail
+{
   id: number = NaN;
   name: string = "";
   drinkAlternate: string = "";
@@ -52,11 +55,13 @@ export class Cocktail extends React.Component<IApiTypeProps> implements ICocktai
       this.instructionsFrench = jsonObject["strInstructionsFR"];
       this.instructionsItalian = jsonObject["strInstructionsIT"];
       this.instructionsChineseSimplified = jsonObject["strInstructionsZH-HANS"];
-      this.instructionsChineseTraditional = jsonObject["strInstructionsZH-HANT"];
+      this.instructionsChineseTraditional =
+        jsonObject["strInstructionsZH-HANT"];
       this.thumbnailLink = jsonObject["strDrinkThumb"];
       this.imageSource = jsonObject["strImageSource"];
       this.imageAttribution = jsonObject["strImageAttribution"];
-      this.isCreativeCommonsConfirmed = jsonObject["strCreativeCommonsConfirmed"] === "Yes";
+      this.isCreativeCommonsConfirmed =
+        jsonObject["strCreativeCommonsConfirmed"] === "Yes";
       this.dateModified = new Date(jsonObject["dateModified"]);
 
       if (String(jsonObject["strAlcoholic"]).toLowerCase() === "alcoholic") {
@@ -67,13 +72,18 @@ export class Cocktail extends React.Component<IApiTypeProps> implements ICocktai
         var measure = jsonObject[`strMeasure${i}`];
         var ingredient = jsonObject[`strIngredient${i}`];
         if (measure !== null && ingredient !== null) {
-          this.cocktailInstructions.push(new CocktailInstruction({ measure: measure, ingredient: ingredient }));
+          this.cocktailInstructions.push(
+            new CocktailInstruction({
+              measure: measure,
+              ingredient: ingredient,
+            })
+          );
         }
       }
-    }
-    catch (e) {
-      console.error(`Couldn't parse at least one JSON key! Could not parse cocktail due to error ${e}.`)
-      return;
+    } catch (e) {
+      console.error(
+        `Couldn't parse at least one JSON key! Could not parse cocktail due to error ${e}.`
+      );
     }
 
     return this;

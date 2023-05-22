@@ -1,4 +1,4 @@
-import { checkForNullJson } from "../backend/jsonhelpers";
+import { checkForNullJson } from "../backend/jsonHelpers";
 import { IApiTypeProps } from "../interfaces/IApiTypeProps";
 import { Ingredient } from "./Ingredient";
 
@@ -7,7 +7,7 @@ export class IngredientList {
 
   constructor(props: IApiTypeProps) {
     if (!checkForNullJson(props.json)) {
-      return;
+      return ;
     }
 
     var jsonObject = JSON.parse(props.json)

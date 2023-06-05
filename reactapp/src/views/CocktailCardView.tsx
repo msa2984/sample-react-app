@@ -5,6 +5,7 @@ import {
   IconButton,
   CardContent,
   Typography,
+  CardMedia,
 } from "@mui/material";
 import { red } from "@mui/material/colors";
 import { useState } from "react";
@@ -15,9 +16,9 @@ export function CocktailCardView(props: ICocktailCardProps) {
   const [isVisible, setIsVisible] = useState(true);
 
   return (
-    <div>
+    <div style={{float:"left"}}>
       {cocktail && isVisible ? (
-        <Card>
+        <Card sx={{ maxWidth: 1/4 }}>
           <CardHeader
             avatar={
               <Avatar sx={{ bgcolor: red[500] }} aria-label="ingredient">
@@ -28,6 +29,11 @@ export function CocktailCardView(props: ICocktailCardProps) {
             title={cocktail?.name}
             subheader={cocktail?.category}
           />
+        <CardMedia
+          component="img"
+          image={cocktail?.thumbnailLink}
+          alt={cocktail?.name}
+        />
           <CardContent>
             <Typography variant="body2" color="text.secondary">
               {cocktail?.instructions}

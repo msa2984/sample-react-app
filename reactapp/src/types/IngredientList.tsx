@@ -1,4 +1,4 @@
-import { checkForNullJson } from "../backend/jsonHelpers";
+import { checkForNullJson } from "../backend/jsonhelpers";
 import { IApiTypeProps } from "../interfaces/IApiTypeProps";
 import { Ingredient } from "./Ingredient";
 

@@ -69,13 +69,13 @@ export class Cocktail
       }
 
       for (var i = 1; i <= 15; i++) {
-        var measure = jsonObject[`strMeasure${i}`];
-        var ingredient = jsonObject[`strIngredient${i}`];
-        if (measure !== null && ingredient !== null) {
+        var currentMeasure = jsonObject[`strMeasure${i}`];
+        var currentIngredient = jsonObject[`strIngredient${i}`];
+        if (currentMeasure !== null && currentIngredient !== null) {
           this.cocktailInstructions.push(
             new CocktailInstruction({
-              measure: measure,
-              ingredient: ingredient,
+              measure: currentMeasure,
+              ingredient: currentIngredient,
             })
           );
         }

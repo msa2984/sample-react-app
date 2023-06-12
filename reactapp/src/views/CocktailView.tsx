@@ -16,8 +16,6 @@ export function CocktailView() {
   var searchForCocktails = async (e: React.MouseEvent<HTMLElement>) => {
     if (cocktailName) {
       const cocktails: Cocktail[] = await fetchCocktails(cocktailName);
-      console.log(cocktails);
-      console.log(cocktails.length);
       if (cocktails) {
         setCocktailResponse(cocktails);
         console.log("Retrieved Cocktails!");
